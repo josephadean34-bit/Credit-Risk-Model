@@ -1,7 +1,15 @@
-# Credit Risk Model using LightGBM and Monte Carlo Simulations
-This project is developing a credit risk model to predict default and to run monte carlo simulations on loan data.
+# Credit Risk Model: Survival Analysis & Default Prediction
 
-The data for this project comes from the Freddie Mac Single Family Loan-level dataset. This dataset contains loans originated from 1999 that were sold to Freddie Mac or back Freddie Mac mortgage backed securities. Containing over 50 million loans and monthly data on their performance, the its is an ideal dataset for modelling credit risk. 
+## Project Overview
+This project develops an end-to-end credit risk modeling pipeline to predict the likelihood of default  within a 12-month horizon. Using the Freddie Mac Single-Family Loan-Level dataset, this project combines survival analysis (Kaplan-Meier), machine learning (LightGBM), and probabilistic risk estimation (Bayesian/Monte Carlo methods) to create a robust risk assessment tool.
+
+## Data Storage
+The data for this project comes from the Freddie Mac Single Family Loan-level dataset. This dataset contains loans originated from 1999 that were sold to Freddie Mac or back Freddie Mac mortgage backed securities. Because it contains over 50 million loan records and their monthly performance the dataset is massive. This project utilizes DuckDB to read the compressed parquet files, process the SQL query, and returns the extracted data.
+
+## Data Preparation & Feature Engineering
+
+1. **Censoring:** In survival analysis, "censoring" means that we don't know the true survival time for that observation (loan). They could have paid off the mortgage early or refinanced. Either way we must censor that mortgage because we don't know if the mortgage resulted in a default. We right-censored loans that had terminated in the previous month.
+2. **Forward-Looking Windows:** The analysis 
 
 A LightGBM model was utilized to predict loan defaults.
 
